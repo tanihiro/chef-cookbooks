@@ -6,5 +6,5 @@
   "is_basic_auth": true,
   "is_ssl": false,
   "keepalive_timeout": 5,
-  "framework": "rails"
+  "framework": "symfony"
 }

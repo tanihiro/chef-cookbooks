@@ -3,6 +3,7 @@
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[users]",
-    "recipe[nginx]"
+    "recipe[nginx]",
+    "recipe[httpd]"
   ]
 }
