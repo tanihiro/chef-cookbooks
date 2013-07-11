@@ -41,9 +41,7 @@ end
 virtualhost_ids = data_bag('virtualhosts')
 index = 1
 virtualhost_ids.each do |virtualhost_id|
-puts virtualhost_id
   virtualhost = data_bag_item('virtualhosts', virtualhost_id)
-  puts virtualhost
 
   template "#{virtualhost['host']}.conf" do
     path   "/etc/nginx/sites-available/#{virtualhost['host']}.conf"
