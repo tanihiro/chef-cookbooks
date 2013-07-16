@@ -46,8 +46,6 @@ virtualhost_ids.each do |virtualhost_id|
     next
   end
 
-  puts virtualhost['proxy_port'] || virtualhost['port'] || 80
-
   template "#{virtualhost['host']}.conf" do
     path "/etc/httpd/conf/sites-available/#{virtualhost['host']}.conf"
     source "#{virtualhost['framework']}.virtualhost.conf.erb"
