@@ -14,6 +14,7 @@
     "recipe[yum::remi]",
     "recipe[users]",
     "recipe[nginx]",
-    "recipe[httpd]"
+    "recipe[httpd]",
+    "recipe[mysql]"
   ]
 }
