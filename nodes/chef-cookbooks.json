@@ -12,6 +12,7 @@
   "run_list":[
     "recipe[yum::epel]",
     "recipe[yum::remi]",
+    "recipe[vim]",
     "recipe[users]",
     "recipe[nginx]",
     "recipe[httpd]",
