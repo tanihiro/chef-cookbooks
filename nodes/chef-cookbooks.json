@@ -41,6 +41,7 @@
     "recipe[httpd]",
     "recipe[mysql]",
     "recipe[munin::master]",
-    "recipe[munin::node]"
+    "recipe[munin::node]",
+    "recipe[git]"
   ]
 }
