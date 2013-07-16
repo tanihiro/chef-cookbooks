@@ -1,4 +1,7 @@
 {
+  "iptables": {
+    "ports": [80]
+  },
   "nginx": {
     "virtualhosts": [
       "example"
@@ -31,6 +34,7 @@
     "recipe[yum::epel]",
     "recipe[yum::remi]",
     "recipe[os-defaults]",
+    "recipe[iptables]",
     "recipe[vim]",
     "recipe[users]",
     "recipe[nginx]",
