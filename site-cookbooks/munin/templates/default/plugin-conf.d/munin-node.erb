@@ -1,0 +1,14 @@
+[diskstats]
+user munin
+
+[iostat_ios]
+user munin
+
+[apache*]
+env.url http://localhost:8080/server-status?auto
+
+[mysql*]
+env.mysqladmin /usr/bin/mysqladmin
+
+[nginx*]
+env.url http://localhost/nginx_status

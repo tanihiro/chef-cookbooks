@@ -11,32 +11,19 @@
   },
   "munin": {
     "master_ips": [
-      "192.0.0.1",
-      "192.0.0.2"
+      "192.168.33.10"
     ],
+    "node_plugin": {
+        "packages": [
+           "apache",
+           "mysql",
+           "nginx"
+        ]
+    },
     "nodes": [
       {
-        "name": "example.com",
-        "ip": "192.0.0.14"
-      },
-      {
-        "name": "example.com2",
-        "ip": "192.0.0.15"
-      }
-    ],
-    "groups": [
-      {
-        "name": "example",
-        "nodes": [
-          {
-            "name": "example.com",
-            "ip": "192.0.0.14"
-          },
-          {
-            "name": "example.com2",
-            "ip": "192.0.0.15"
-          }
-        ]
+        "name": "localhost",
+        "ip": "127.0.0.1"
       }
     ]
   },
