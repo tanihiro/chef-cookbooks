@@ -9,6 +9,37 @@
       "example"
     ]
   },
+  "munin": {
+    "master_ips": [
+      "192.0.0.1",
+      "192.0.0.2"
+    ],
+    "nodes": [
+      {
+        "name": "example.com",
+        "ip": "192.0.0.14"
+      },
+      {
+        "name": "example.com2",
+        "ip": "192.0.0.15"
+      }
+    ],
+    "groups": [
+      {
+        "name": "example",
+        "nodes": [
+          {
+            "name": "example.com",
+            "ip": "192.0.0.14"
+          },
+          {
+            "name": "example.com2",
+            "ip": "192.0.0.15"
+          }
+        ]
+      }
+    ]
+  },
   "run_list":[
     "recipe[yum::epel]",
     "recipe[yum::remi]",
@@ -17,6 +48,8 @@
     "recipe[users]",
     "recipe[nginx]",
     "recipe[httpd]",
-    "recipe[mysql]"
+    "recipe[mysql]",
+    "recipe[munin::master]",
+    "recipe[munin::node]"
   ]
 }
