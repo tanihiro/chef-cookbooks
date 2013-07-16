@@ -2,6 +2,7 @@
   "id": "example",
   "host": "example.com",
   "port": 80,
+  "proxy_port": 8080,
   "root_path": "/var/www/sites/example.com/public",
   "is_basic_auth": true,
   "is_ssl": false,

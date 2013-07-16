@@ -38,7 +38,7 @@ directory "/etc/nginx/sites-enabled" do
   action :create
 end
 
-virtualhost_ids = data_bag('virtualhosts')
+virtualhost_ids = (node['nginx'] && node['nginx']['virtualhosts']) || []
 index = 1
 virtualhost_ids.each do |virtualhost_id|
   virtualhost = data_bag_item('virtualhosts', virtualhost_id)

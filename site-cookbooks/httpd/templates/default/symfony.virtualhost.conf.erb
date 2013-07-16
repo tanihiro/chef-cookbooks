@@ -10,5 +10,13 @@ NameVirtualHost *:<%= @port %>
   <Directory "<%= @root_path %>">
       AllowOverride  All
       DirectoryIndex index.php index.html
+
+    <% if @is_basic_auth === true %>
+      AuthType       Basic
+      AuthName       "Basic authenticate"
+      AuthGroupFile  /stg/null
+      AuthUserFile   "/var/www/sites/.htpasswd"
+      Require        valid-user
+    <% end %>
   </Directory>
 </VirtualHost>

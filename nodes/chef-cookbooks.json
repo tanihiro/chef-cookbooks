@@ -1,4 +1,14 @@
 {
+  "nginx": {
+    "virtualhosts": [
+      "example"
+    ]
+  },
+  "httpd": {
+    "virtualhosts": [
+      "example"
+    ]
+  },
   "run_list":[
     "recipe[yum::epel]",
     "recipe[yum::remi]",

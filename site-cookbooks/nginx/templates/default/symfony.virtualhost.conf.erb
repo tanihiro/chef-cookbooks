@@ -6,6 +6,11 @@ server {
  
     # 静的ファイルはNginxが返却
     location ~ .*\.(jpg|JPG|gif|GIF|png|PNG|swf|SWF|css|CSS|js|JS|inc|INC|ico|ICO|zip|ZIP) {
+      <% if @is_basic_auth === true %>
+        auth_basic            "Basic authenticate";
+        auth_basic_user_file  "/var/www/sites/.htpasswd";
+      <% end %>
+
         root <%= @root_path %>;
         index index.php;
         access_log /var/log/nginx/<%= @host %>.access.log main;
@@ -14,6 +19,11 @@ server {
     }
  
     location / {
+      <% if @is_basic_auth === true %>
+        auth_basic            "Basic authenticate";
+        auth_basic_user_file  "/var/www/sites/.htpasswd";
+      <% end %>
+
         proxy_set_header Host $host;
         proxy_set_header SSL_HTTPS "off";
         proxy_set_header X_FORWARDED_SSL "off";

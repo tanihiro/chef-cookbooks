@@ -37,7 +37,7 @@ service 'httpd' do
   supports :status => true, :restart => true, :reload => true
 end
 
-virtualhost_ids = data_bag('virtualhosts')
+virtualhost_ids = (node['httpd'] && node['httpd']['virtualhosts']) || []
 index = 1
 virtualhost_ids.each do |virtualhost_id|
   virtualhost = data_bag_item('virtualhosts', virtualhost_id)
@@ -45,6 +45,8 @@ virtualhost_ids.each do |virtualhost_id|
     index+=1
     next
   end
+
+  puts virtualhost['proxy_port'] || virtualhost['port'] || 80
 
   template "#{virtualhost['host']}.conf" do
     path "/etc/httpd/conf/sites-available/#{virtualhost['host']}.conf"
