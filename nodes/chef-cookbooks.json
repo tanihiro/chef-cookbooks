@@ -30,6 +30,13 @@
       }
     ]
   },
+  "rbenv": {
+    "user": "app",
+    "versions": [
+      "2.0.0-p247",
+      "1.9.3-p448"
+    ]
+  },
   "run_list":[
     "recipe[yum::epel]",
     "recipe[yum::remi]",
@@ -42,6 +49,7 @@
     "recipe[mysql]",
     "recipe[munin::master]",
     "recipe[munin::node]",
-    "recipe[git]"
+    "recipe[git]",
+    "recipe[rbenv]"
   ]
 }
