@@ -1,0 +1,7 @@
+<% node['nagios']['hostgroups'].each do |group_name, host_names| %>
+define hostgroup{
+        hostgroup_name  <%= group_name %>
+        alias           <%= group_name %>
+        members         <%= host_names.join(',') %>
+        }
+<% end %>

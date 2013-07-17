@@ -30,6 +30,33 @@
       }
     ]
   },
+  "nagios": {
+    "master_ip": "192.0.0.1",
+    "contacts": [
+      { 
+        "group_name": "admins",
+        "name": "itani-hiroki",
+        "alias": "Hiroki Itani",
+        "email": "itani-hiroki@kayac.com"
+      }
+    ],
+    "hosts": [
+      {
+        "name": "web01",
+        "alias": "web01",
+        "address": "192.0.0.12"
+      },
+      {
+        "name": "db01",
+        "alias": "db01",
+        "address": "192.0.0.13"
+      }
+    ],
+    "hostgroups": {
+        "web-servers": ["web01"],
+        "db-servers":  ["db01"]
+    }
+  },
   "rbenv": {
     "user": "app",
     "versions": [
@@ -50,6 +77,8 @@
     "recipe[munin::master]",
     "recipe[munin::node]",
     "recipe[git]",
-    "recipe[rbenv]"
+    "recipe[rbenv]",
+    "recipe[nagios::master]",
+    "recipe[nagios::nrpe]"
   ]
 }

@@ -1,0 +1,71 @@
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers,db-servers
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers,db-servers
+        service_description             DISK
+        check_command                   check_nrpe!check_disk
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers,db-servers
+        service_description             Load Average
+        check_command                   check_nrpe!check_load
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers,db-servers
+        service_description             SSH
+        check_command                   check_ssh
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers
+        service_description             HTTP
+        check_command                   check_http_url!/
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers
+        service_description             apache proc
+        check_command                   check_nrpe!check_httpd_proc
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers
+        service_description             nginx proc
+        check_command                   check_nrpe!check_nginx_proc
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  web-servers,db-servers
+        service_description             munin-node proc
+        check_command                   check_nrpe!check_munin_node_proc
+        notifications_enabled           1
+        }
+
+define service{
+        use                             generic-service
+        hostgroup_name                  db-servers
+        service_description             mysqld proc
+        check_command                   check_nrpe!check_mysqld_proc
+        notifications_enabled           1
+        }
