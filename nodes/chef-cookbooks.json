@@ -79,6 +79,7 @@
     "recipe[git]",
     "recipe[rbenv]",
     "recipe[nagios::master]",
-    "recipe[nagios::nrpe]"
+    "recipe[nagios::nrpe]",
+    "recipe[redis]"
   ]
 }
