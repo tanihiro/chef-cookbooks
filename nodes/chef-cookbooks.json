@@ -13,9 +13,7 @@
     ]
   },
   "munin": {
-    "master_ips": [
-      "192.168.33.10"
-    ],
+    "master_ip": "192.168.33.10",
     "node_plugin": {
         "packages": [
            "apache",

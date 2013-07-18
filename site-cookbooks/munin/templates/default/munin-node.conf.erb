@@ -43,8 +43,8 @@ ignore_file \.pod$
 
 allow ^127\.0\.0\.1$
 allow ^::1$
-<% ((node['munin'] && node['munin']['master_ips']) || []).each do |ip| %>
-allow ^<%= ip %>$
+<% if (node['munin'] && node['munin']['master_ip']) %>
+allow ^<%= node['munin']['master_ip'] %>$
 <% end %>
 
 # If you have installed the Net::CIDR perl module, you can use one or more
