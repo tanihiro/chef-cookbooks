@@ -11,9 +11,15 @@ package 'nagios-nrpe' do
   action :install
 end
 
+service 'nrpe' do
+  action [ :enable, :start ]
+  supports :status => true, :restart => true, :reload => true
+end
+
 template 'nrpe.cfg' do
   path '/etc/nagios/nrpe.cfg'
   owner  "root"
   group  "root"
-  notifies :reload, 'service[nagios]'
+  notifies :reload, 'service[nrpe]'
 end
+

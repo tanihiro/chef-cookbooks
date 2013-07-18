@@ -22,30 +22,28 @@ service 'nagios' do
   supports :status => true, :restart => true, :reload => true
 end
 
-template 'contacts.cfg' do
-  path '/etc/nagios/objects/contacts.cfg'
+%W(contacts commands hosts hostgroups services).each do |config_name|
+  template "#{config_name}.cfg" do
+    path "/etc/nagios/objects/#{config_name}.cfg"
+    owner  "root"
+    group  "root"
+    mode   0664
+    notifies :reload, 'service[nagios]'
+  end
+end
+
+template 'nagios.cfg' do
+  path '/etc/nagios/nagios.cfg'
   owner  "root"
   group  "root"
+  mode   0664
   notifies :reload, 'service[nagios]'
 end
 
-template 'hosts.cfg' do
-  path '/etc/nagios/objects/hosts.cfg'
-  owner  "root"
-  group  "root"
-  notifies :reload, 'service[nagios]'
-end
-
-template 'hostgroups.cfg' do
-  path '/etc/nagios/objects/hostgroups.cfg'
-  owner  "root"
-  group  "root"
-  notifies :reload, 'service[nagios]'
-end
-
-template 'services.cfg' do
-  path '/etc/nagios/objects/services.cfg'
-  owner  "root"
-  group  "root"
-  notifies :reload, 'service[nagios]'
+plugins = %W(nagios-plugins nagios-plugins-disk nagios-plugins-http nagios-plugins-load nagios-plugins-mysql nagios-plugins-ping nagios-plugins-procs nagios-plugins-ssh nagios-plugins-swap nagios-plugins-users nagios-plugins-nrpe)
+plugins += ((node['nagios'] && node['nagios']['plugins']) || [])
+plugins.each do |plugin|
+  package plugin do
+    action :install
+  end
 end

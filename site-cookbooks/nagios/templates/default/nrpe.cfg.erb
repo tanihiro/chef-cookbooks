@@ -215,14 +215,15 @@ include_dir=/etc/nrpe.d/
 
 # The following examples use hardcoded command arguments...
 
-command[check_user]=/usr/local/nagios/libexec/check_user -w 5 -c 10
-command[check_load]=/usr/local/nagios/libexec/check_load -w 12,8,4 -c 24,20,16
-command[check_zombie_procs]=/usr/local/nagios/libexec/check_procs -w 5 -c 10 -s Z
-command[check_total_procs]=/usr/local/nagios/libexec/check_procs -w 150 -c 200
-command[check_disk]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /
-command[check_munin_node_proc]=/usr/local/nagios/libexec/check_procs -c 1: -C munin-node
-command[check_nginx_proc]=/usr/local/nagios/libexec/check_procs -c 1: -C nginx
-command[check_httpd_proc]=/usr/local/nagios/libexec/check_procs -c 1: -C httpd
+command[check_user]=/usr/lib64/nagios/plugins/check_user -w 5 -c 10
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w 12,8,4 -c 24,20,16
+command[check_zombie_procs]=/usr/lib64/nagios/plugins/check_procs -w 5 -c 10 -s Z
+command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w 150 -c 200
+command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /
+command[check_munin_node_proc]=/usr/lib64/nagios/plugins/check_procs -c 1: -C munin-node
+command[check_nginx_proc]=/usr/lib64/nagios/plugins/check_procs -c 1: -C nginx
+command[check_httpd_proc]=/usr/lib64/nagios/plugins/check_procs -c 1: -C httpd
+command[check_mysqld_proc]=/usr/lib64/nagios/plugins/check_procs -c 1: -C mysqld
 
 # The following examples allow user-supplied arguments and can
 # only be used if the NRPE daemon was compiled with support for 
