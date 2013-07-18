@@ -64,6 +64,11 @@
       "1.9.3-p448"
     ]
   },
+  "php": {
+    "modules": [
+      "php-pecl-imagick"
+    ]
+  },
   "run_list":[
     "recipe[yum::epel]",
     "recipe[yum::remi]",
@@ -80,6 +85,8 @@
     "recipe[rbenv]",
     "recipe[nagios::master]",
     "recipe[nagios::nrpe]",
-    "recipe[redis]"
+    "recipe[redis]",
+    "recipe[subversion]",
+    "recipe[php]"
   ]
 }
