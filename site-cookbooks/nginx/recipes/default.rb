@@ -45,7 +45,7 @@ virtualhost_ids.each do |virtualhost_id|
 
   template "#{virtualhost['host']}.conf" do
     path   "/etc/nginx/sites-available/#{virtualhost['host']}.conf"
-    source "#{virtualhost['framework']}.virtualhost.conf.erb"
+    source virtualhost['nginx_source']
     owner  "root"
     group  "root"
     mode 0755
@@ -54,7 +54,7 @@ virtualhost_ids.each do |virtualhost_id|
       :port              => virtualhost['port'] || 80,
       :proxy_port        => virtualhost['proxy_port'] || 8080,
       :host              => virtualhost['host'],
-      :root_path         => virtualhost['root_path'],
+      :root_path         => virtualhost['root_path'] || nil,
       :keepalive_timeout => virtualhost['keepalive_timeout'] || 5,
       :is_basic_auth     => virtualhost['is_basic_auth'] || false,
       :is_ssl            => virtualhost['is_ssl'] || false

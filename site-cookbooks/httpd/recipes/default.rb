@@ -41,14 +41,10 @@ virtualhost_ids = (node['httpd'] && node['httpd']['virtualhosts']) || []
 index = 1
 virtualhost_ids.each do |virtualhost_id|
   virtualhost = data_bag_item('virtualhosts', virtualhost_id)
-  if virtualhost['framework'] == 'rails'
-    index+=1
-    next
-  end
 
   template "#{virtualhost['host']}.conf" do
     path "/etc/httpd/conf/sites-available/#{virtualhost['host']}.conf"
-    source "#{virtualhost['framework']}.virtualhost.conf.erb"
+    source virtualhost['apache_source']
     owner "root"
     group "root"
     mode 0755

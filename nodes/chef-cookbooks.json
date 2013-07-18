@@ -13,7 +13,7 @@
     ]
   },
   "munin": {
-    "master_ip": "192.168.33.10",
+    "master_ip": "127.0.0.1",
     "node_plugin": {
         "packages": [
            "apache",
@@ -29,7 +29,7 @@
     ]
   },
   "nagios": {
-    "master_ip": "192.0.0.1",
+    "master_ip": "127.0.0.1",
     "contacts": [
       { 
         "group_name": "admins",
@@ -42,12 +42,12 @@
       {
         "name": "web01",
         "alias": "web01",
-        "address": "192.0.0.12"
+        "address": "127.0.0.1"
       },
       {
         "name": "db01",
         "alias": "db01",
-        "address": "192.0.0.13"
+        "address": "127.0.0.1"
       }
     ],
     "hostgroups": {

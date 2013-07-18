@@ -1,11 +1,11 @@
 {
   "id": "example",
-  "host": "example.com",
+  "host": "hogehoge.com",
   "port": 80,
   "proxy_port": 8080,
-  "root_path": "/var/www/sites/example.com/public",
   "is_basic_auth": true,
   "is_ssl": false,
   "keepalive_timeout": 5,
-  "framework": "symfony"
+  "nginx_source":  "monitor.virtualhost.conf.erb",
+  "apache_source": "monitor.virtualhost.conf.erb"
 }

@@ -3,7 +3,7 @@
   ServerName   <%= @host %>
   ErrorLog     "logs/<%= @host %>.error_log"
   CustomLog    "logs/<%= @host %>.access_log" combined
- 
+
   <Directory "<%= @root_path %>">
       AllowOverride  All
       DirectoryIndex index.php index.html

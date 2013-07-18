@@ -3,9 +3,8 @@ server {
     server_name  <%= @host %>;
  
     #charset koi8-r;
- 
     # 静的ファイルはNginxが返却
-    location ~ .*\.(jpg|JPG|gif|GIF|png|PNG|swf|SWF|css|CSS|js|JS|inc|INC|ico|ICO|zip|ZIP) {
+    location ~ ([^(munin)|(nagios)])*\.(jpg|JPG|gif|GIF|png|PNG|swf|SWF|css|CSS|js|JS|inc|INC|ico|ICO|zip|ZIP) {
       <% if @is_basic_auth === true %>
         auth_basic            "Basic authenticate";
         auth_basic_user_file  "/var/www/sites/.htpasswd";

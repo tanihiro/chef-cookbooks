@@ -1,0 +1,33 @@
+<VirtualHost *:<%= @port %>>
+  ServerName   <%= @host %>
+  ErrorLog     "logs/<%= @host %>.error_log"
+  CustomLog    "logs/<%= @host %>.access_log" combined
+
+  ScriptAlias /nagios/cgi-bin "/usr/lib64/nagios/cgi-bin"
+  Alias /nagios /usr/share/nagios/html
+  <Directory "/usr/share/nagios/html/">
+     AllowOverride None
+     AuthName "Nagios Access"
+     AuthType Basic
+     AuthUserFile /etc/nagios/passwd
+     Require valid-user
+  </Directory>
+  <Directory "/usr/lib64/nagios/cgi-bin/">
+     Options ExecCGI
+     AllowOverride None
+     AuthName "Nagios Access"
+     AuthType Basic
+     AuthUserFile /etc/nagios/passwd
+     Require valid-user
+  </Directory>
+
+  ScriptAlias /munin-cgi "/var/www/cgi-bin"
+  Alias /munin /var/www/html/munin
+  <Directory "/var/www/html/munin/">
+     AuthName "Munin Access"
+     AuthType Basic
+     AuthUserFile /etc/munin/munin-htpasswd
+     Require valid-user
+  </Directory>
+</VirtualHost>
+
