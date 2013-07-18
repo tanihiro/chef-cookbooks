@@ -14,6 +14,12 @@
   end
 end
 
+cookbook_file "/etc/sysconfig/clock" do
+  owner "root"
+  mode 0644
+end
+
+
 link "/etc/localtime" do
   to "/usr/share/zoneinfo/Japan"
 end
