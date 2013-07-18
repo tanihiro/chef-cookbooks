@@ -7,13 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{mysql mysql-devel mysql-server}.each do |pkg|
+%w{mysql mysql-devel}.each do |pkg|
   package pkg do
     action :install
   end
-end
-
-service 'mysqld' do
-  action [ :enable, :start ]
-  supports :status => true, :restart => true, :reload => true
 end
