@@ -5,7 +5,8 @@ user munin
 user munin
 
 [apache*]
-env.url http://localhost:8080/server-status?auto
+env.url http://localhost:%d/server-status?auto
+env.port 8080
 
 [mysql*]
 env.mysqladmin /usr/bin/mysqladmin
