@@ -7,8 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-package 'httpd' do
-  action :install
+%W(httpd httpd-devel).each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
 template "httpd.conf" do

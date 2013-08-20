@@ -1,0 +1,26 @@
+server {
+    listen       <%= @port %>;
+    server_name  <%= @host %>;
+ 
+    location / {
+        # Basic認証
+        auth_basic            "Local Security Test";
+        auth_basic_user_file  "/var/www/sites/htpasswd/.<%= @host %>";
+
+        root       <%= @root_path %>;
+        index      index.html;
+        access_log /var/log/nginx/<%= @host %>.access.log main;
+        error_log  /var/log/nginx/<%= @host %>.error.log;
+        break;
+    }
+ 
+    #error_page  404              /404.html;
+ 
+    # redirect server error pages to the static page /50x.html
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+
+

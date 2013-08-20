@@ -14,3 +14,9 @@ subversion 'checkout redmine' do
   action :checkout
   group 'app'
 end
+
+%W(libcurl-devel apr-devel apr-util-devel).each do |pkg|
+  package pkg do
+    action :install
+  end
+end

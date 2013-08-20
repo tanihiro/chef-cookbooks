@@ -1012,3 +1012,8 @@ NameVirtualHost *:<%= (node['httpd'] && node['httpd']['port']) || 8080 %>
 #</VirtualHost>
 
 Include conf/sites-enabled/*.conf
+
+# Passenger
+LoadModule passenger_module /home/app/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/passenger-4.0.10/buildout/apache2/mod_passenger.so
+PassengerRoot /home/app/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/passenger-4.0.10
+PassengerDefaultRuby /home/app/.rbenv/versions/2.0.0-p247/bin/ruby
