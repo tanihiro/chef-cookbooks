@@ -38,8 +38,8 @@ service 'httpd' do
 end
 
 virtualhost_ids = (node['httpd'] && node['httpd']['virtualhosts']) || []
-index = 1
-virtualhost_ids.each do |virtualhost_id|
+
+virtualhost_ids.each.with_index(1) do |virtualhost_id, index|
   virtualhost = data_bag_item('virtualhosts', virtualhost_id)
 
   template "#{virtualhost['host']}.conf" do
@@ -49,7 +49,7 @@ virtualhost_ids.each do |virtualhost_id|
     group "root"
     mode 0755
     notifies :reload, 'service[httpd]'
-    variables({ 
+    variables({
       :port          => virtualhost['proxy_port'] || virtualhost['port'] || 80,
       :host          => virtualhost['host'],
       :root_path     => virtualhost['root_path'],
@@ -57,11 +57,9 @@ virtualhost_ids.each do |virtualhost_id|
       :is_ssl        => virtualhost['is_ssl'] || false
     })
   end
-  
+
   link "/etc/httpd/conf/sites-enabled/#{sprintf('%03d', index)}-#{virtualhost['host']}.conf" do
     to "/etc/httpd/conf/sites-available/#{virtualhost['host']}.conf"
     link_type :symbolic
   end
-
-  index+=1
 end
